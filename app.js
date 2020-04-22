@@ -5,6 +5,8 @@ import logger from "morgan";
 import indexRouter from "./routes/index";
 import { CustomError, errorHandler } from "./lib/error";
 
+import "./db";
+
 const app = express();
 
 app.use(logger("dev"));
