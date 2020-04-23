@@ -28,7 +28,7 @@ const schema = mongoose.Schema({
   note: [
     {
       time: { type: Number, required: true },
-      key: {type: String, required: true }
+      key: {type: Number, required: true }
     }
   ],
   ranking: [
