@@ -16,8 +16,15 @@ export const getSongs = async (req, res, next) => {
   }
 };
 
-export const getSongById = (req, res) => {
-  res.send("get song by id");
+export const getSongById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const song = await Song.findById(id).lean();
+
+    res.json({ status: "Ok", song });
+  } catch (error) {
+    next(error);
+  }
 };
 
 export const postSong = (req, res) => {
