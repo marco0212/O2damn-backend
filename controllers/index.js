@@ -1,9 +1,19 @@
+import Song from "../models/song";
+
 export const getIndex = (req, res) => {
   res.send("Hello Stranger?");
 };
 
-export const getSongs = (req, res) => {
-  res.send("get songs");
+export const getSongs = async (req, res, next) => {
+  try {
+    const songs = await Song.find()
+      .select("title artist_name artist_thumbnail video_url music_url music_thumbnail")
+      .lean();
+
+    res.json({ status: "Ok", items: songs });
+  } catch (error) {
+    next(error);
+  }
 };
 
 export const getSongById = (req, res) => {
