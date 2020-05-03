@@ -25,18 +25,25 @@ const schema = mongoose.Schema({
     type: String,
     default: ''
   },
-  note: [
-    {
-      time: { type: Number, required: true },
-      key: {type: Number, required: true }
-    }
-  ],
-  ranking: [
-    {
-      username: { type: String, required: true },
-      score: { type: Number, required: true }
-    }
-  ]
+  note: {
+    type: [
+      {
+        time: { type: Number, required: true },
+        key: {type: Number, required: true }
+      }
+    ],
+    required: true
+  },
+  ranking: {
+    type: [
+      {
+        username: { type: String, required: true },
+        score: { type: Number, required: true }
+      }
+    ],
+    required: true,
+    default: []
+  }
 });
 
 export default mongoose.model("Song", schema);
