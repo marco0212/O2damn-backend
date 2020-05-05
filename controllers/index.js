@@ -1,4 +1,5 @@
 import Song from "../models/song";
+import url from "url";
 
 export const getIndex = (req, res) => {
   res.send("Hello Stranger?");
@@ -7,8 +8,18 @@ export const getIndex = (req, res) => {
 export const getSongs = async (req, res, next) => {
   try {
     const songs = await Song.find().lean();
+    const fullUrl = url.format({
+      protocol: req.protocol,
+      host: req.get('host')
+    });
+    const items = songs.map(song => {
+      const { song_file_name } = song;
+      const music_url = `${fullUrl}/audio/${song_file_name}`;
 
-    res.json({ status: "Ok", items: songs });
+      return Object.assign(song, { music_url });
+    });
+
+    res.json({ status: "Ok", items });
   } catch (error) {
     next(error);
   }
