@@ -6,9 +6,7 @@ export const getIndex = (req, res) => {
 
 export const getSongs = async (req, res, next) => {
   try {
-    const songs = await Song.find()
-      .select("title artist_name artist_thumbnail video_url music_url music_thumbnail")
-      .lean();
+    const songs = await Song.find().lean();
 
     res.json({ status: "Ok", items: songs });
   } catch (error) {
@@ -25,10 +23,6 @@ export const getSongById = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-};
-
-export const postSong = (req, res) => {
-  res.send("post song");
 };
 
 export const updateSongRanking = async (req, res, next) => {
