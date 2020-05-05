@@ -32,7 +32,8 @@ const schema = mongoose.Schema({
         key: {type: Number, required: true }
       }
     ],
-    required: true
+    required: true,
+    default: []
   },
   ranking: {
     type: [
