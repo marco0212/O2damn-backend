@@ -13,10 +13,20 @@ export const getSongs = async (req, res, next) => {
       host: req.get('host')
     });
     const items = songs.map(song => {
-      const { song_file_name } = song;
+      const {
+        song_file_name,
+        artist_pic_file_name,
+        song_thumbnail_file_name
+      } = song;
       const music_url = `${fullUrl}/audio/${song_file_name}`;
+      const artist_pic = `${fullUrl}/artist_pic/${artist_pic_file_name}`;
+      const music_thumb_url = `${fullUrl}/thunbnail/${song_thumbnail_file_name}`;
 
-      return Object.assign(song, { music_url });
+      return Object.assign(song, {
+        music_url,
+        artist_pic,
+        music_thumb_url
+      });
     });
 
     res.json({ status: "Ok", items });
