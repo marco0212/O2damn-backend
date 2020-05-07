@@ -6,7 +6,6 @@ import {
   postSong,
   updateSongNote,
   updateSongRanking,
-  deleteSongById
 } from "../controllers";
 
 const router = express.Router();
@@ -16,6 +15,5 @@ router.get("/songs", getSongs);
 router.get("/song/:id", getSongById);
 router.put("/song/:id/ranking", updateSongRanking);
 router.put("/song/:id/note", updateSongNote);
-router.delete("/song/:id", deleteSongById);
 
 export default router;

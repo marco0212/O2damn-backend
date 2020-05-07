@@ -81,7 +81,3 @@ export const updateSongNote = async (req, res, next) => {
     next(err);
   }
 };
-
-export const deleteSongById = (req, res) => {
-  res.send("delete song by id");
-};
