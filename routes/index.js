@@ -3,7 +3,6 @@ import {
   getIndex,
   getSongs,
   getSongById,
-  postSong,
   updateSongNote,
   updateSongRanking,
 } from "../controllers";
