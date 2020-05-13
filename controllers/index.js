@@ -9,7 +9,7 @@ export const getSongs = async (req, res, next) => {
   try {
     const songs = await Song.find().lean();
     const fullUrl = url.format({
-      protocol: req.protocol,
+      protocol: 'https',
       host: req.get('host')
     });
     const items = songs.map(song => {
