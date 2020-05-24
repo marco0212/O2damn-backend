@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const schema = mongoose.Schema({
   title: {
@@ -47,4 +47,4 @@ const schema = mongoose.Schema({
   }
 });
 
-export default mongoose.model("Song", schema);
+export default mongoose.model('Song', schema);

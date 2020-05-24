@@ -1,8 +1,8 @@
-import Song from "../models/song";
-import url from "url";
+import Song from '../models/song';
+import url from 'url';
 
 export const getIndex = (req, res) => {
-  res.send("Hello Stranger?");
+  res.send('Hello Stranger?');
 };
 
 export const getSongs = async (req, res, next) => {
@@ -29,7 +29,7 @@ export const getSongs = async (req, res, next) => {
       });
     });
 
-    res.json({ status: "Ok", items });
+    res.json({ status: 'Ok', items });
   } catch (error) {
     next(error);
   }
@@ -40,7 +40,7 @@ export const getSongById = async (req, res, next) => {
     const { id } = req.params;
     const song = await Song.findById(id).lean();
 
-    res.json({ status: "Ok", song });
+    res.json({ status: 'Ok', song });
   } catch (error) {
     next(error);
   }
@@ -51,29 +51,11 @@ export const updateSongRanking = async (req, res, next) => {
     const { id } = req.params;
     const { rankList } = req.body;
     const song = await Song.findByIdAndUpdate(id, {
-        ranking: rankList
-      }, {
-        new : true,
-        select: "title artist_name ranking"
-      }
-    );
-
-    res.json({ status: 'Ok', song });
-  } catch (err) {
-    next(err);
-  }
-};
-
-export const updateSongNote = async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    const { note } = req.body;
-    const song = await Song.findByIdAndUpdate(id, {
-        note
-      }, {
-        new : true,
-        select: "title artist_name note"
-      }
+      ranking: rankList
+    }, {
+      new : true,
+      select: 'title artist_name ranking'
+    }
     );
 
     res.json({ status: 'Ok', song });
